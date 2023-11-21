@@ -25,7 +25,12 @@ const jestConfig = {
 	collectCoverageFrom: ['src/**/*.[jt]s?(x)'],
 	coveragePathIgnorePatterns: [...ignores, 'src/(umd|cjs|esm)-entry.[jt]s$'],
 	coverageReporters: ['text', 'cobertura', 'lcov', 'json'],
-	transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$'],
+	transformIgnorePatterns: [
+		'[/\\\\]node_modules[/\\\\]',
+	],
+	moduleNameMapper: {
+		axios: 'axios/dist/node/axios.cjs',
+	},
 	reporters: ['default', [require.resolve('jest-junit'), junitConfig]],
 	coverageThreshold: {
 		global: {
